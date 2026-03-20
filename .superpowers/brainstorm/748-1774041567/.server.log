@@ -1,0 +1,4 @@
+{"type":"server-started","port":51220,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:51220","screen_dir":"/home/wieeii/CSC316-A3/.superpowers/brainstorm/748-1774041567"}
+{"type":"screen-added","file":"/home/wieeii/CSC316-A3/.superpowers/brainstorm/748-1774041567/approaches.html"}
+{"type":"screen-added","file":"/home/wieeii/CSC316-A3/.superpowers/brainstorm/748-1774041567/design-overview.html"}
+{"type":"server-stopped","reason":"idle timeout"}

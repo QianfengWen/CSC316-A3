@@ -1,0 +1,58 @@
+<h2>Three Approaches for Franchise Explorer</h2>
+<p class="subtitle">Interactive D3 dashboard comparing movie franchises — pick the direction that feels right</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Timeline River</h3>
+      <p><strong>Main view:</strong> A horizontal timeline (1970–2025) where each franchise is a "river" — a horizontal band whose height encodes box office revenue per entry. Movies appear as dots along the river, colored by rating.</p>
+      <p><strong>Supporting panels:</strong></p>
+      <ul>
+        <li><strong>Franchise Comparison Bar Chart</strong> — total revenue, avg rating, # of entries side-by-side</li>
+        <li><strong>Detail Card</strong> — click a movie dot to see poster, budget, revenue, rating, cast</li>
+      </ul>
+      <p><strong>Interactions:</strong> Brush a year range on the timeline → bars and stats update. Filter by genre/franchise via dropdowns. Animated transitions when filters change. Narrative annotations highlight key moments ("MCU Phase 3 peak").</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Strong temporal narrative</li><li>Natural brushing target</li><li>Visually distinctive</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>River layout is complex to implement</li><li>Can get cluttered with many franchises</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Scatter + Linked Dashboard</h3>
+      <p><strong>Main view:</strong> An animated scatter plot with configurable axes (budget vs revenue, sequel # vs rating, year vs revenue, etc.). Each dot is a movie, colored by franchise, sized by box office.</p>
+      <p><strong>Supporting panels:</strong></p>
+      <ul>
+        <li><strong>Franchise Trajectory Line Chart</strong> — shows selected franchise's rating/revenue across sequels as a connected line</li>
+        <li><strong>Aggregate Stats Panel</strong> — bar chart comparing franchises on chosen metric</li>
+      </ul>
+      <p><strong>Interactions:</strong> Dynamic dropdowns change scatter axes with smooth animated transitions. Brush on scatter → highlights in trajectory chart. Click franchise in bar chart → filters scatter. Annotation callouts for outliers.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Flexible — many stories from one view</li><li>Axis-switching animations are impressive</li><li>Scatter is forgiving with varied data</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Scatter plots can feel generic</li><li>Need good axis combos to tell stories</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Franchise Showdown Arena</h3>
+      <p><strong>Main view:</strong> A "slope chart" / parallel coordinates view — each franchise is a line connecting its entries across sequel number (x-axis), with y-axis showing rating or revenue. Lines rise and fall, visually showing sequel fatigue or resilience.</p>
+      <p><strong>Supporting panels:</strong></p>
+      <ul>
+        <li><strong>Stacked Timeline</strong> — area chart showing franchise box office share over time</li>
+        <li><strong>Franchise Radar/Profile Card</strong> — spider chart comparing a selected franchise on multiple metrics</li>
+      </ul>
+      <p><strong>Interactions:</strong> Hover a franchise line → all others dim, detail card appears. Brush a sequel range on the slope chart → timeline updates. Filter by decade/genre. Annotations mark franchise milestones.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Directly shows sequel fatigue patterns</li><li>Slope chart is visually compelling</li><li>Strong narrative potential</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Franchises have different # of entries — uneven lines</li><li>Radar charts can be hard to read</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
