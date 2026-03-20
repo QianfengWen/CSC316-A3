@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Franchise Machine</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="app">
+        <header class="app-header">
+            <h1>The Franchise Machine</h1>
+            <p class="subtitle">How Hollywood's Biggest Franchises Rise, Reign, and Fade</p>
+        </header>
+
+        <div class="filter-bar" id="filter-bar">
+            <span class="filter-label">FILTERS</span>
+            <div class="filter-group">
+                <label>Genre</label>
+                <select id="filter-genre" multiple></select>
+            </div>
+            <div class="filter-group filter-range">
+                <label>Year Range</label>
+                <div class="range-container">
+                    <input type="range" id="filter-year-min" min="1970" max="2025" value="1970">
+                    <input type="range" id="filter-year-max" min="1970" max="2025" value="2025">
+                    <span id="year-range-label">1970 – 2025</span>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>Min Entries</label>
+                <select id="filter-min-entries">
+                    <option value="1">1+</option>
+                    <option value="3" selected>3+</option>
+                    <option value="5">5+</option>
+                    <option value="8">8+</option>
+                    <option value="10">10+</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Metric</label>
+                <select id="filter-metric">
+                    <option value="vote_average" selected>Rating</option>
+                    <option value="revenue">Revenue</option>
+                    <option value="budget">Budget</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="panels">
+            <div class="panel panel-river" id="panel-river">
+                <div class="panel-title">FRANCHISE RIVERS — Box Office Over Time</div>
+                <div class="panel-content" id="river-container"></div>
+            </div>
+            <div class="panel panel-trajectory" id="panel-trajectory">
+                <div class="panel-title">SEQUEL TRAJECTORY — Rating by Entry #</div>
+                <div class="panel-content" id="trajectory-container"></div>
+            </div>
+            <div class="panel panel-dominance" id="panel-dominance">
+                <div class="panel-title">FRANCHISE DOMINANCE — Box Office Share by Year</div>
+                <div class="panel-content" id="dominance-container"></div>
+            </div>
+            <div class="panel panel-profile" id="panel-profile">
+                <div class="panel-title">FRANCHISE PROFILE</div>
+                <div class="panel-content" id="profile-container"></div>
+            </div>
+        </div>
+
+        <div class="annotation-bar" id="annotation-bar">
+            <span class="annotation-icon">&#9733;</span>
+            <div class="annotation-text" id="annotation-text"></div>
+            <div class="annotation-nav">
+                <button id="annotation-prev">&#9668;</button>
+                <button id="annotation-next">&#9658;</button>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            <p>Data source: <a href="https://www.themoviedb.org/" target="_blank">TMDB</a> | CSC316 Assignment 3 | Qianfeng Wen</p>
+        </footer>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script src="js/state.js"></script>
+    <script src="js/river.js"></script>
+    <script src="js/trajectory.js"></script>
+    <script src="js/dominance.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/annotations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
