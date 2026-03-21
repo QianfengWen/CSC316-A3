@@ -13,9 +13,48 @@ const ProfileCard = (() => {
 
     function renderEmpty() {
         container.html('');
-        container.append('div')
-            .attr('class', 'profile-empty')
-            .text('Hover a franchise or click a movie to see details');
+        const state = State.get();
+        const franchises = state.filteredData || [];
+
+        if (franchises.length === 0) {
+            container.append('div')
+                .attr('class', 'profile-empty')
+                .text('No franchises match current filters');
+            return;
+        }
+
+        const div = container.append('div').attr('class', 'profile-empty');
+
+        const allMovies = franchises.flatMap(f => f.movies);
+        const totalRevenue = d3.sum(allMovies, m => m.revenue);
+        const highestRated = allMovies.reduce((best, m) =>
+            m.vote_average > (best ? best.vote_average : 0) ? m : best, null);
+
+        div.append('div')
+            .attr('class', 'profile-name')
+            .style('color', 'var(--accent)')
+            .style('font-style', 'normal')
+            .text('Dataset Overview');
+
+        const stats = div.append('div').attr('class', 'profile-stats').style('margin', '12px 0');
+        addStat(stats, String(franchises.length), 'Franchises');
+        addStat(stats, String(allMovies.length), 'Movies');
+        addStat(stats, fmt.moneyShort(totalRevenue), 'Combined Revenue');
+
+        if (highestRated) {
+            div.append('div')
+                .style('font-size', '11px')
+                .style('color', 'var(--text-secondary)')
+                .style('margin-top', '8px')
+                .style('font-style', 'normal')
+                .html(`Highest rated: <strong style="color:var(--text-primary)">${highestRated.title}</strong> (${fmt.rating(highestRated.vote_average)})`);
+        }
+
+        div.append('div')
+            .style('font-size', '11px')
+            .style('margin-top', '10px')
+            .style('color', 'var(--text-secondary)')
+            .text('Hover or click to explore');
     }
 
     function update(state) {

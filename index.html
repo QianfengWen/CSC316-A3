@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Franchise Machine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
@@ -18,14 +21,18 @@
             <span class="filter-label">FILTERS</span>
             <div class="filter-group">
                 <label>Genre</label>
-                <select id="filter-genre" multiple></select>
+                <div id="filter-genre-pills" class="genre-pills"></div>
             </div>
             <div class="filter-group filter-range">
                 <label>Year Range</label>
                 <div class="range-container">
-                    <input type="range" id="filter-year-min" min="1970" max="2025" value="1970">
-                    <input type="range" id="filter-year-max" min="1970" max="2025" value="2025">
-                    <span id="year-range-label">1970 – 2025</span>
+                    <span class="range-value" id="year-min-value">1970</span>
+                    <div class="range-track-wrapper">
+                        <input type="range" id="filter-year-min" min="1970" max="2025" value="1970">
+                        <input type="range" id="filter-year-max" min="1970" max="2025" value="2025">
+                        <div class="range-fill" id="range-fill"></div>
+                    </div>
+                    <span class="range-value" id="year-max-value">2025</span>
                 </div>
             </div>
             <div class="filter-group">
@@ -47,6 +54,8 @@
                 </select>
             </div>
         </div>
+
+        <div class="franchise-legend" id="franchise-legend"></div>
 
         <div class="panels">
             <div class="panel panel-river" id="panel-river">

@@ -34,10 +34,11 @@ body {
 }
 
 .app-header h1 {
-    font-size: 28px;
+    font-family: 'Bebas Neue', var(--font-stack);
+    font-size: 36px;
     font-weight: 700;
     color: var(--accent);
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     text-transform: uppercase;
 }
 
@@ -108,35 +109,80 @@ body {
     gap: 8px;
 }
 
-.range-container input[type="range"] {
-    flex: 1;
-    -webkit-appearance: none;
-    height: 4px;
-    background: var(--border);
-    border: none;
-    border-radius: 2px;
+.range-value {
+    font-size: 11px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    min-width: 32px;
+    text-align: center;
 }
 
-.range-container input[type="range"]::-webkit-slider-thumb {
+.range-track-wrapper {
+    flex: 1;
+    position: relative;
+    height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.range-track-wrapper input[type="range"] {
+    position: absolute;
+    width: 100%;
+    -webkit-appearance: none;
+    height: 4px;
+    background: transparent;
+    border: none;
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.range-track-wrapper input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 14px;
     height: 14px;
     border-radius: 50%;
     background: var(--accent);
     cursor: pointer;
+    pointer-events: auto;
+    position: relative;
+    z-index: 3;
 }
 
-#year-range-label {
-    font-size: 11px;
-    color: var(--text-secondary);
-    white-space: nowrap;
+.range-track-wrapper input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    pointer-events: auto;
+    border: none;
+}
+
+.range-fill {
+    position: absolute;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.range-track-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    z-index: 0;
 }
 
 /* === Panel Grid === */
 .panels {
     display: grid;
     grid-template-columns: 3fr 2fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1.5fr 1fr;
     gap: 12px;
     margin-bottom: 12px;
     height: 600px;
@@ -152,10 +198,11 @@ body {
 }
 
 .panel-title {
-    font-size: 12px;
+    font-family: 'Bebas Neue', var(--font-stack);
+    font-size: 13px;
     font-weight: 700;
     color: var(--accent);
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 10px;
     flex-shrink: 0;
@@ -370,9 +417,127 @@ body {
 .profile-empty {
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     color: var(--text-secondary);
     font-size: 13px;
     font-style: italic;
+}
+
+/* === Franchise Legend === */
+.franchise-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    padding: 8px 12px;
+    background: var(--bg-panel);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    align-items: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: opacity 0.2s ease, background 0.2s ease;
+    user-select: none;
+}
+
+.legend-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.legend-item.dimmed {
+    opacity: 0.2;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legend-name {
+    font-size: 11px;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+/* === Genre Pill Toggles === */
+.genre-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    max-width: 300px;
+}
+
+.genre-pill {
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-family: var(--font-stack);
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.genre-pill:hover {
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+
+.genre-pill.active {
+    border-color: var(--accent);
+    background: rgba(240, 192, 64, 0.15);
+    color: var(--accent);
+}
+
+/* === River Panel Scrolling === */
+.panel-river .panel-content {
+    overflow-y: auto;
+}
+
+/* === Dark Theme Scrollbar === */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d4a830;
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--bg-primary);
+}
+
+/* === App Fade-In === */
+.app {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.app.loaded {
+    opacity: 1;
 }
