@@ -58,7 +58,7 @@ Development took approximately 18–20 people-hours across two weeks, broken int
 
 ### Use of LLMs
 
-I used Claude (an LLM) extensively throughout development — for generating the initial project scaffold, drafting D3 code for each panel, debugging cross-panel state synchronization, and iterating on CSS styling. I found this workflow productive: I could describe a desired interaction pattern in natural language and receive working D3 code that I then reviewed and refined. The LLM was particularly helpful for boilerplate-heavy tasks (SVG setup, axis configuration, tooltip positioning) and for generating the synthetic dataset. The areas where I spent the most manual effort were fine-tuning the visual design (colors, spacing, font sizes) and debugging edge cases in the interaction logic — tasks that require visual judgment and iterative testing in the browser.
+I used Claude as a coding assistant during development. It was most helpful for scaffolding repetitive setup work, suggesting D3 patterns, and helping debug issues in the cross-panel interaction logic. I treated the LLM as a support tool rather than as the source of the design itself: I still reviewed, revised, and integrated the code manually, especially when refining the visual design, adjusting interaction behavior, and handling edge cases. The parts that required the most direct effort from me were the aesthetic tuning (colors, spacing, typography) and the final rounds of browser-based debugging, since those depended on iterative judgment rather than code generation alone.
 
 ### Aspects That Took the Most Time
 
@@ -71,5 +71,5 @@ The cross-panel linking and state management consumed the most development time.
 - **Data source:** [The Movie Database (TMDB)](https://www.themoviedb.org/) — used under their API terms of service
 - **Visualization library:** [D3.js v7](https://d3js.org/) by Mike Bostock et al.
 - **Typography:** [Bebas Neue](https://fonts.google.com/specimen/Bebas+Neue) via Google Fonts
-- **Development assistance:** Claude (Anthropic) was used as a coding assistant throughout development
+- **Development assistance:** Claude (Anthropic) was used as a coding assistant during development
 - **Inspiration:** The NameGrapher application (for interaction design philosophy), Netflix's UI (for dark-theme aesthetic direction)
