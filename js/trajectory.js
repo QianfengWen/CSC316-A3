@@ -6,6 +6,11 @@
 const TrajectoryChart = (() => {
     let svg, g, width, height, xScale, yScale;
     const margin = { top: 10, right: 15, bottom: 30, left: 40 };
+    const metricLabels = {
+        vote_average: 'Rating',
+        revenue: 'Revenue',
+        budget: 'Budget'
+    };
 
     function init(container) {
         const el = d3.select(container);
@@ -36,6 +41,9 @@ const TrajectoryChart = (() => {
 
         const metric = state.activeFilters.metric;
         const brushRange = state.brushRange;
+
+        d3.select('#panel-trajectory .panel-title')
+            .text(`SEQUEL TRAJECTORY — ${metricLabels[metric] || 'Rating'} by Entry #`);
 
         // Build series data: group movies by franchise + series
         const seriesData = [];
